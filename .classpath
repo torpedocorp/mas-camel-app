@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_121"/>
+	<classpathentry kind="lib" path="lib/camel-core-2.21.1.jar" sourcepath="C:/Users/배영준/AppData/Local/Temp/.org.sf.feeling.decompiler1536228692101/source/camel-core-2.21.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-aop-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-beans-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-context-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-core-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-expression-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-jms-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-test-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-tx-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-web-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring4/spring-webmvc-4.3.0.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

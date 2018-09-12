@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+
+    	<restConfiguration bindingMode="auto" component="jetty" host="localhost"  port="10030">
+			<componentProperty key="foo" value="bar"/>
+ 		</restConfiguration>
+ 		
+ 		<route id="rest-1">
+			<from uri="timer:hello?period=5000"/>
+			<to uri="rest:get:say/hello"/>
+			<log message="${body}"/>
+		</route>
+		
+	</camelContext>
+	
+		
+ </beans>

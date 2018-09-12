@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring" 
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+	http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+	<cxf:cxfEndpoint id="HelloServiceEndpoint"
+		serviceClass="kr.co.bizframe.camel.cxf.hello.server.Hello" address="http://localhost:10030/helloService" />
+	
+	
+	<bean id="helloService" class="kr.co.bizframe.camel.cxf.hello.server.HelloImpl" />
+	
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+
+		<route id="server_ws">
+			<from uri="cxf:bean:HelloServiceEndpoint" />
+			<to uri="bean:helloService" />
+		</route>
+
+	</camelContext>
+
+	
+ </beans>

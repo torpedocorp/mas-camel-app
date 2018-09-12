@@ -1,0 +1,10 @@
+<application>
+	<id>camel-rest-simple-client</id>
+	<name>camel-rest-simple-client</name>
+	<load-class>kr.co.bizframe.mas.camel.CamelApplication</load-class>
+	<!--parent-first-classloader>false</parent-first-classloader-->
+	<!--parent-only-classloader>true</parent-only-classloader-->
+	<params>
+		<param key="test" value="test" ></param>
+ 	</params>
+</application>

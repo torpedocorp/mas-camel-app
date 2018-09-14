@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	
+	<!--bean id="noErrorHandler" class="org.apache.camel.builder.NoErrorHandlerBuilder"/-->
+
+	<bean id="userService" class="kr.co.bizframe.camel.rest.user.UserService" />
+  
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+
+		<restConfiguration bindingMode="json" component="jetty" port="10030">
+			<componentProperty key="foo" value="bar"/>
+ 		</restConfiguration>
+
+		
+		<rest consumes="application/json" produces="application/json"  path="/user">
+			<get uri="/{id}" outType="kr.co.bizframe.camel.rest.user.User">
+				<description>Find user by id</description>
+				<param name="id" type="path" description="The id of the user to get" dataType="int"/>
+				<to uri="direct:getUser"/>
+			</get>
+			<get uri="/list" outType="kr.co.bizframe.camel.rest.user.User[]">
+				<description>Find user List</description>
+				<to uri="direct:getUserList"/>
+			</get>
+			<put uri="/create" type="kr.co.bizframe.camel.rest.user.User">
+        		<description> create a user</description>
+        		<to uri="direct:createUsert"/>
+        	</put>	
+      			
+		</rest>
+    
+    
+		<route id="rest-1">
+			<from uri="direct:getUser"/>
+			<to uri="bean:userService?method=getUser(${header.id})"/>
+		</route>
+		<route id="rest-2">
+			<from uri="direct:getUserList"/>
+			<to uri="bean:userService?method=getUserList"/>
+		</route>
+		<route id="rest-3">
+			<from uri="direct:createUsert"/>
+			<to uri="bean:userService?method=createUser"/>
+		</route>
+		
+	</camelContext>
+	
+		
+ </beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+ 
+	<bean id="jetty" class="org.apache.camel.component.jetty9.JettyHttpComponent9">
+	</bean>
+
+ 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+	    <route>
+		  <from uri="file:d:/camel/src?minDepth=2&amp;delay=2000"/>
+		  <!-- minDepth=2 : input 폴더(d:/camel/src)에서 첫번째 서브 디렉토리 안에 있는 파일까지 polling -->
+		  <!-- minDepth=1 : base 디렉토리만, minDepth=3 : 첫번째 서브 디렉토리 안의 디렉토리까지 모두 file polling -->
+		  <to uri="file://d:/camel/destination"/>
+	    </route>
+	</camelContext>
+ </beans>
